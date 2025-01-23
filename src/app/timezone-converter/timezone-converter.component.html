@@ -1,0 +1,49 @@
+<p>timezone-converter works!</p>
+<div class="container mx-auto p-4">
+  <h1 class="text-3xl font-bold text-center mb-6">
+    Time Zone Converter
+  </h1>
+
+  <div class="flex flex-col space-y-4">
+    <div>
+      <label class="block text-sm font-medium mb-2">Select Your Time Zone</label>
+      <select
+        [(ngModel)]="userTimeZone"
+        class="w-full p-2 border rounded"
+        (change)="convertTime()"
+      >
+        <option *ngFor="let zone of timeZones" [value]="zone">
+          {{ zone }}
+        </option>
+      </select>
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium mb-2">Select Target Time Zone</label>
+      <select
+        [(ngModel)]="targetTimeZone"
+        class="w-full p-2 border rounded"
+        (change)="convertTime()"
+      >
+        <option *ngFor="let zone of timeZones" [value]="zone">
+          {{ zone }}
+        </option>
+      </select>
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium mb-2">Enter Time Slot</label>
+      <input
+        [(ngModel)]="inputTime"
+        type="time"
+        class="w-full p-2 border rounded"
+        (input)="convertTime()"
+      />
+    </div>
+
+    <div class="p-4 bg-gray-100 rounded shadow">
+      <p class="text-xl font-semibold">Converted Time</p>
+      <p class="text-lg">{{ convertedTime }}</p>
+    </div>
+  </div>
+</div>
